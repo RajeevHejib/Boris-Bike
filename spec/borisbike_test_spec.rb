@@ -17,5 +17,14 @@ describe DockingStation do
     expect { subject.dock_bike Bike.new }.to raise_error "Docking Station full"
   end
 
+  it "returns capacity 30 when capacity set to 30" do
+    subject.capacity = 30
+    expect(subject.capacity).to eq 30
+  end
+
+  it "returns capacity 20 when nothing passed" do
+    expect(subject.capacity).to eq 20
+  end
+
 
 end
