@@ -18,7 +18,14 @@ class DockingStation
 
   def dock_bike(bike)
     fail "Docking Station full" if full?
-    @bikes << bike
+    if bike.working
+       @bikes << bike
+       bike
+    else
+      bike.report
+      @bikes << bike
+      bike
+    end
   end
 
   private
@@ -34,6 +41,15 @@ class DockingStation
 end
 
 class Bike
+  attr_accessor :working
+
+  def initialize
+    @working = true
+  end
+
+  def report
+    @working = false
+  end
 
   def working?
     @bike
