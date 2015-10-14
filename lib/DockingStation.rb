@@ -47,8 +47,4 @@ class Bike
     @working = false
   end
 
-  def working?
-    @bike
-  end
-
 end
