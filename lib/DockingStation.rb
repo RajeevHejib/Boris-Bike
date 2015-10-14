@@ -1,11 +1,10 @@
 class DockingStation
 
-  attr_reader :bike, :capacity
+  attr_reader :bikes, :capacity
 
   def initialize
     @bikes = []
   end
-
 
   def release_bike
     fail "No bikes available" if @bikes.empty?
@@ -17,14 +16,9 @@ class DockingStation
     @bikes << bike
   end
 
-  def bike
-    @bike
-  end
-
 end
 
 class Bike
-
 
   def working?
     @bike
