@@ -1,7 +1,13 @@
 require 'DockingStation.rb'
 
 describe DockingStation do
+  bike_in_van = []
   let(:bike) { double(:bike, working: false) }
+  let(:van) { double(:van, :bike_in_van) }
+
+
+#  let(:garage) { double(:garage) }
+
 
   it { is_expected.to respond_to :release_bike }
 
@@ -33,4 +39,20 @@ describe DockingStation do
     subject.dock_bike(bike)
     expect {subject.release_bike}.to raise_error "bike is broken"
   end
+
+  it "get broken bikes" do
+    DockingStation::DEFAULT_CAPACITY.times {subject.dock_bike(bike)}
+    subject.get_broken_bikes
+    expect(subject.broken_bikes.all? {|bike| bike.working == false }).to eq true
+  end
+
+  it "will deliver to garage" do
+    DockingStation::DEFAULT_CAPACITY.times {subject.dock_bike(bike)}
+  end
+
+  it "will load a van" do
+
+    DockingStation::DEFAULT_CAPACITY.times {subject.load_van(bike_in_van)}
+  end
+
 end

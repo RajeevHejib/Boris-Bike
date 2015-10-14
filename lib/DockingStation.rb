@@ -1,6 +1,8 @@
+require './lib/bike.rb'
+
 class DockingStation
 
-  attr_reader :bikes
+  attr_reader :bikes, :broken_bikes
   attr_accessor :capacity
 
   DEFAULT_CAPACITY = 20
@@ -8,6 +10,7 @@ class DockingStation
 
   def initialize(capacity=DEFAULT_CAPACITY)
     @bikes = []
+    @broken_bikes = []
     @capacity = capacity
   end
 
@@ -24,6 +27,17 @@ class DockingStation
     bike
   end
 
+  def get_broken_bikes
+    @bikes.each {|bike| @broken_bikes << bike if bike.working == false}
+  end
+
+  def load_van
+    van=Van.new
+    van.dock_bike(@broken_bikes)
+  end
+
+
+
   private
   def full?
     @bikes.count >= DEFAULT_CAPACITY
@@ -33,18 +47,5 @@ class DockingStation
     @bikes.count <= 0
   end
 
-
-end
-
-class Bike
-  attr_accessor :working
-
-  def initialize
-    @working = true
-  end
-
-  def report
-    @working = false
-  end
 
 end
