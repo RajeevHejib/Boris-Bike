@@ -5,6 +5,7 @@ class Dockingstation
   attr_reader :bikes, :broken_bikes
   attr_accessor :capacity
 
+
   DEFAULT_CAPACITY = 20
 
 
