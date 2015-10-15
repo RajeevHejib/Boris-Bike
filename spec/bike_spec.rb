@@ -1,4 +1,4 @@
-require 'bike'
+require './lib/bike.rb'
 
 describe Bike do
 

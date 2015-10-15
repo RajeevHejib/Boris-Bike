@@ -1,6 +1,6 @@
 require './lib/bike.rb'
 
-class DockingStation
+class Dockingstation
 
   attr_reader :bikes, :broken_bikes
   attr_accessor :capacity
@@ -35,8 +35,6 @@ class DockingStation
     van=Van.new
     van.dock_bike(@broken_bikes)
   end
-
-
 
   private
   def full?

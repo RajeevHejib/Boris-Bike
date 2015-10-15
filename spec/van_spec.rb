@@ -1,4 +1,4 @@
-require 'van'
+require './lib/van.rb'
 
 describe Van do
 

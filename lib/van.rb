@@ -1,4 +1,4 @@
-require './lib/DockingStation'
+require './lib/dockingstation.rb'
 
 
 class Van
